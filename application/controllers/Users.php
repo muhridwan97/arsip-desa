@@ -1081,7 +1081,6 @@ class Users extends CI_Controller {
 
 					$data['judul_web'] 	  = "Surat Masuk | Aplikasi Surat Menyurat";
 				}
-
 					$this->load->view('users/header', $data);
 					$this->load->view("users/pemrosesan/$p", $data);
 					$this->load->view('users/footer');
@@ -1547,7 +1546,7 @@ class Users extends CI_Controller {
 
 					$data['judul_web'] 	  = "Surat Keluar | Aplikasi Surat Menyurat";
 				}
-
+				
 					$this->load->view('users/header', $data);
 					$this->load->view("users/pemrosesan/$p", $data);
 					$this->load->view('users/footer');

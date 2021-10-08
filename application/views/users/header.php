@@ -194,7 +194,7 @@ $sub_menu3 = strtolower($this->uri->segment(3));
 								<li class="<?php if ($sub_menu == "sk" or $sub_menu == "sm") { echo 'active';}?>">
 									<a href="#"><i class="icon-file-spreadsheet"></i> <span>DATA SURAT</span></a>
 									<ul>
-										<li class="<?php if ($sub_menu == "suratmasuk") { echo 'active';}?>"><a href="users/suratmasuk"><i class="icon-folder-download2"></i> SURAT MASUK</a></li>
+										<li class="<?php if ($sub_menu == "sm") { echo 'active';}?>"><a href="users/sm"><i class="icon-folder-download2"></i> SURAT MASUK</a></li>
 										<li class="<?php if ($sub_menu == "sk") { echo 'active';}?>"><a href="users/sk"><i class="icon-folder-upload2"></i> SURAT KELUAR</a></li>
 									</ul>
 								</li>

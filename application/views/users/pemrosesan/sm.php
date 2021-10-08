@@ -43,7 +43,7 @@
           <tbody>
               <?php
               $no = 1;
-              foreach ($suratmasuk->result() as $baris) {
+              foreach ($sm->result() as $baris) {
               ?>
                 <tr <?php if($baris->peringatan == 1){echo 'style="background:yellow;"';} ?>>
                   <td><?php echo $no.'.'; ?></td>
