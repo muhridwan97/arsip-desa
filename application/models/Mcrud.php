@@ -9,6 +9,7 @@ class Mcrud extends CI_Model {
 	var $tbl_sm		 				 = 'tbl_sm';
 	var $tbl_sk		 				 = 'tbl_sk';
 	var $tbl_memo	 				 = 'tbl_memo';
+	var $tbl_dept	 				 = 'dept';
 
 	//Sent mail
 			public function sent_mail($username, $email, $aksi)
@@ -253,5 +254,22 @@ class Mcrud extends CI_Model {
 		$this->db->where('id_memo', $id);
 		$this->db->delete($this->tbl_memo);
 	}
+
+	// get data departemen
+    function getAllDept()
+    {
+		$query = $this->db->get($this->tbl_dept)->result_array();
+
+        return $query;
+    }
+
+	// get data departemen
+    function getDeptById($id)
+    {
+		$this->db->where('id', $id);
+		$query = $this->db->get($this->tbl_dept)->row_array();
+
+        return $query;
+    }
 
 }

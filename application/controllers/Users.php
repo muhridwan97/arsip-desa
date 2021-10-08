@@ -1411,11 +1411,19 @@ class Users extends CI_Controller {
 
 					$data['judul_web'] 	  = "Tambah Surat Keluar | Aplikasi Surat Menyurat";
 					$data['data_ns']			= $this->Mcrud->data_ns('sk', "$id_user");
+					$data['departemen']			= $this->Mcrud->getAllDept();
 				}elseif ($aksi == 'd') {
 					$p = "sk_detail";
 
 					$this->db->join('tbl_user', 'tbl_sk.id_user=tbl_user.id_user');
-					$data['query'] = $this->db->get_where("tbl_sk", array('id_sk' => "$id"))->row();
+					$data['query'] = $this->db
+									->select([
+										'tbl_sk.*',
+										'dept.dept'
+									])
+									->from("tbl_sk")
+									->join("dept","dept.id = tbl_sk.id_dept","left")
+									->where(['id_sk' => "$id"])->get()->row();
 					$data['judul_web'] 	  = "Detail Surat Keluar | Aplikasi Surat Menyurat";
 
 					// if ($data['query']->id_user == '') {
@@ -1565,7 +1573,9 @@ class Users extends CI_Controller {
 							$pengirim   	 	= htmlentities(strip_tags($this->input->post('pengirim')));
 							$penerima   	 	= htmlentities(strip_tags($this->input->post('penerima')));
 							$perihal   	 	= htmlentities(strip_tags($this->input->post('perihal')));
-
+							$departemen   	 	= htmlentities(strip_tags($this->input->post('departemen')));
+							$dataDepartemen = $this->Mcrud->getDeptById($departemen);
+							$ns = str_replace("/../","/".$dataDepartemen['kode']."/", $ns);
 							date_default_timezone_set('Asia/Jakarta');
 							$waktu = date('Y-m-d H:m:s');
 							$tgl 	 = date('d-m-Y');
@@ -1581,6 +1591,7 @@ class Users extends CI_Controller {
 										'penerima'	 		 => $penerima,
 										'id_bagian'		 	 => $bagian,
 										'perihal'		   	 => $perihal,
+										'id_dept'		   	 => $departemen,
 										'token_lampiran' => $token,
 										'id_user'				 => $id_user,
 										'dibaca'				 => 0,

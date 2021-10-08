@@ -109,6 +109,17 @@ if ($cek_ns->num_rows() == 0) {
                             <input type="text" name="perihal" id="perihal" class="form-control" placeholder="">
                       </div>
                     </div>
+                  <div class="form-group">
+                    <label class="control-label col-lg-3">Departemen</label>
+                    <div class="col-lg-9">
+                      <select class="form-control" name="departemen" id="departemen"
+                              data-placeholder="departemen" style="width: 100%" required>
+                          <?php foreach ($departemen as $key => $dept) : ?>
+                          <option value="<?= $dept['id'] ?>" <?= set_select('departemen', $dept['dept'], (isset($_GET['departemen']) ? $_GET['departemen'] : '') == $dept['dept']) ?>><?= $dept['dept'] ?></option>                          
+                          <?php endforeach; ?>
+                      </select>
+                    </div>
+                  </div>
                     <div class="form-group">
                       <label class="control-label col-lg-3"><b>Lampiran</b></label>
                       <div class="col-lg-12">
@@ -199,6 +210,7 @@ Dropzone.options.myDropzone = {
             formData.append("pengirim", jQuery("#pengirim").val());
             formData.append("penerima", jQuery("#penerima").val());
             formData.append("perihal", jQuery("#perihal").val());
+            formData.append("departemen", jQuery("#departemen").val());
     });
 
     this.on("complete", function(file) {

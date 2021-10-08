@@ -65,6 +65,12 @@ $( function() {
     												<input type="text" name="perihal" id="perihal" class="form-control" value="<?php echo $query->perihal; ?>" placeholder="">
     									</div>
                     </div>
+                    <div class="form-group">
+                      <label class="control-label col-lg-3">Departemen</label>
+                      <div class="col-lg-9">
+    												<input type="text" name="departemen" id="departemen" class="form-control" value="<?php echo $query->dept; ?>" placeholder="">
+    									</div>
+                    </div>
                     <?php if ($query->disposisi != ''){ ?>
                     <div class="form-group">
                       <label class="control-label col-lg-3">Disposisi Ke bagian</label>
