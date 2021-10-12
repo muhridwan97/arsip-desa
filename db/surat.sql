@@ -181,7 +181,6 @@ insert  into `tbl_lampiran`(`id_lampiran`,`token_lampiran`,`nama_berkas`,`ukuran
 (139,'c832af7e418f7c7ce29e8230a73a569d','LEMBAR1-dikonversi11.docx','7.13'),
 (140,'d35dd9105970acab3807ba2b73f72c77','LEMBAR1-dikonversi12.docx','7.13'),
 (141,'e6fb3d23843c75bd082b1a460361092c','HAHA_KOSONG1.pdf','179.77'),
-(142,'78af39a7784f32e3ba34ffb872cd60c6','dasi.png','13.25'),
 (143,'a1f7a18e822cae26b2fe760707071b17','dasi1.png','13.25'),
 (144,'8b93c93963ea664631e1fc4f7f515bfa','dasi2.png','250.85');
 
@@ -267,7 +266,6 @@ insert  into `tbl_sk`(`id_sk`,`id_dept`,`no_surat`,`tgl_ns`,`pengirim`,`penerima
 (93,NULL,'B-2491/In.20//../10/2021','06-10-2021','','','',0,'4889fbbd61c36323e93662cdb3df5d40',6,0,'',0,'06-10-2021'),
 (92,NULL,'B-2490/In.20//../10/2021','06-10-2021','','','',0,'953536f95c8a3c19ac7f56425e0e67d3',6,0,'',0,'06-10-2021'),
 (102,NULL,'B-2500/In.20//../10/2021','06-10-2021','','','',0,'a6da1f9980779e847085d2b4e0b6b657',6,1,'',0,'06-10-2021'),
-(103,2,'B-2501/In.20//../10/2021','08-10-2021','ridwan','fatim','project',0,'78af39a7784f32e3ba34ffb872cd60c6',0,0,'',0,'08-10-2021'),
 (104,1,'B-2502/In.20//OT.01/10/2021','08-10-2021','ridwan','bos','hallo bos',0,'a1f7a18e822cae26b2fe760707071b17',6,0,'',0,'08-10-2021'),
 (105,3,'B-2503/In.20//HM.00/10/2021','08-10-2021','ridwan','badang','git',0,'8b93c93963ea664631e1fc4f7f515bfa',6,0,'',0,'08-10-2021');
 
@@ -295,7 +293,6 @@ CREATE TABLE `tbl_sm` (
 /*Data for the table `tbl_sm` */
 
 insert  into `tbl_sm`(`id_sm`,`no_surat`,`tgl_ns`,`pengirim`,`penerima`,`perihal`,`id_bagian`,`token_lampiran`,`id_user`,`dibaca`,`disposisi`,`peringatan`,`tgl_sm`) values 
-(107,'1234/KP25/2021','06-10-2021','','','',0,'d35dd9105970acab3807ba2b73f72c77',6,0,'',0,'06-10-2021'),
 (104,'B-2502/In.20//../10/2021','06-10-2021','','','',0,'475a1d7e152a0df9471baf6e9f0aa610',6,0,'',0,'06-10-2021'),
 (102,'B-2500/In.20//../10/2021','06-10-2021','','','',0,'105db93f494fb417a075379ae26a6e2e',6,0,'',0,'06-10-2021'),
 (103,'B-2501/In.20//../10/2021','06-10-2021','','','',0,'44972bcc112dd58e39bd13d49c36c895',6,0,'',0,'06-10-2021'),
@@ -309,8 +306,7 @@ insert  into `tbl_sm`(`id_sm`,`no_surat`,`tgl_ns`,`pengirim`,`penerima`,`perihal
 (95,'B-2493/In.20//../10/2021','06-10-2021','','','',0,'6c125082f8d02940f80301c10a4c17e8',6,0,'',0,'06-10-2021'),
 (93,'B-2491/In.20//../10/2021','06-10-2021','','','',0,'9ea5a42cb2297723b8d4ad754ba3f7ab',6,0,'',0,'06-10-2021'),
 (105,'B-2503/In.20//../10/2021','06-10-2021','','','',0,'a6cc6497f61791cc2e84dfa55cb1f6ef',6,0,'',0,'06-10-2021'),
-(106,'B-2504/In.20//../10/2021','06-10-2021','','','',0,'c832af7e418f7c7ce29e8230a73a569d',6,0,'',0,'06-10-2021'),
-(108,'','07-10-2021','fat','zahro','agdad',0,'e6fb3d23843c75bd082b1a460361092c',0,0,'',0,'07-10-2021');
+(106,'B-2504/In.20//../10/2021','06-10-2021','SEKRETARIS DESA','zahros','maknaasd',0,'c832af7e418f7c7ce29e8230a73a569d',0,1,'',0,'06-10-2021');
 
 /*Table structure for table `tbl_user` */
 
@@ -337,7 +333,7 @@ CREATE TABLE `tbl_user` (
 insert  into `tbl_user`(`id_user`,`username`,`password`,`nama_lengkap`,`email`,`alamat`,`telp`,`pengalaman`,`level`,`status`,`tgl_daftar`,`terakhir_login`) values 
 (1,'admin','21232f297a57a5a743894a0e4a801fc3','KEPALA DESA','anwarsptr@gmail.com','negarabumi','453454','ok','s_admin','aktif','07-10-2017 17:03:12','06-10-2021 19:06:47'),
 (5,'admin2','c84258e9c39059a89ab77d846ddab909','KAUR UMUM','herusp49@gmail.com','Negarabumi','4646546','ok','admin','aktif','07-10-2017 17:30:08','06-10-2021 19:07:14'),
-(6,'user','ee11cbb19052e40b07aac0ca060c23ee','SEKRETARIS DESA','herusp49@gmail.com','negarabumi','0987775','ok','user','aktif','07-10-2017 17:31:54','08-10-2021 10:48:17'),
+(6,'user','ee11cbb19052e40b07aac0ca060c23ee','SEKRETARIS DESA','herusp49@gmail.com','negarabumi','0987775','ok','user','aktif','07-10-2017 17:31:54','12-10-2021 11:21:03'),
 (7,'user1','24c9e15e52afc47c225b757e7bee1f9d','user1','-','-','-','-','user','aktif','05-10-2021 15:53:31',NULL);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
