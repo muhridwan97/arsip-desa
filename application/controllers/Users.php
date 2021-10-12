@@ -958,8 +958,18 @@ class Users extends CI_Controller {
 
 				if ($aksi == 't') {
 					$p = "sm_tambah";
-					if ($data['user']->row()->level == 's_admin' or $data['user']->row()->level == 'user') {
-							redirect('404_content');
+					if ($data['user']->row()->level == 's_admin' or $data['user']->row()->level == 'admin') {
+						$this->session->set_flashdata('msg',
+							'
+							<div class="alert alert-warning alert-dismissible" role="alert">
+									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+										<span aria-hidden="true">&times;&nbsp; &nbsp;</span>
+									</button>
+									<strong>Gagal!</strong> Maaf, Anda tidak berhak menambah data surat masuk.
+							</div>'
+						);
+				
+						redirect('users/sm');
 					}
 
 					$data['judul_web'] 	  = "Tambah Surat Masuk | Aplikasi Surat Menyurat";
@@ -1009,26 +1019,26 @@ class Users extends CI_Controller {
 					}
 				}elseif ($aksi == 'e') {
 					$p = "sm_edit";
-					if ($data['user']->row()->level == 's_admin' or $data['user']->row()->level == 'user') {
+					if ($data['user']->row()->level == 's_admin' or $data['user']->row()->level == 'admin') {
 							redirect('404_content');
 					}
 
 					$data['query'] = $this->db->get_where("tbl_sm", array('id_sm' => "$id"))->row();
 					$data['judul_web'] 	  = "Edit Surat Masuk | Aplikasi Surat Menyurat";
 
-					// if ($data['query']->id_user == '' or $data['query']->level != 'admin') {
-					// 		$this->session->set_flashdata('msg',
-					// 			'
-					// 			<div class="alert alert-warning alert-dismissible" role="alert">
-					// 				 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					// 					 <span aria-hidden="true">&times;&nbsp; &nbsp;</span>
-					// 				 </button>
-					// 				 <strong>Gagal!</strong> Maaf, Anda tidak berhak mengubah data surat masuk.
-					// 			</div>'
-					// 		);
-					//
-					// 		redirect('users/sm');
-					// }
+					if ($data['query']->id_user == '') {
+							$this->session->set_flashdata('msg',
+								'
+								<div class="alert alert-warning alert-dismissible" role="alert">
+									 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+										 <span aria-hidden="true">&times;&nbsp; &nbsp;</span>
+									 </button>
+									 <strong>Gagal!</strong> Maaf, Anda tidak berhak mengubah data surat masuk.
+								</div>'
+							);
+					
+							redirect('users/sm');
+					}
 
 				}elseif ($aksi == 'h') {
 
@@ -1039,7 +1049,7 @@ class Users extends CI_Controller {
 					$data['query'] = $this->db->get_where("tbl_sm", array('id_sm' => "$id", 'id_user' => "$id_user"))->row();
 					$data['judul_web'] 	  = "Hapus Surat Masuk | Aplikasi Surat Menyurat";
 
-					if ($data['query']->level != 'user') {
+					if ($data['user']->row()->level != 'user') {
 							// $this->session->set_flashdata('msg',
 							// 	'
 							// 	<div class="alert alert-warning alert-dismissible" role="alert">
@@ -1346,17 +1356,17 @@ class Users extends CI_Controller {
 					}
 
 					if (isset($_POST['btnupdate'])) {
-						$no_asal   	 	= htmlentities(strip_tags($this->input->post('no_asal')));
-						// $tgl_ns   	 	= htmlentities(strip_tags($this->input->post('tgl_ns')));
-						$tgl_no_asal  = htmlentities(strip_tags($this->input->post('tgl_no_asal')));
+						$ns   	 	= htmlentities(strip_tags($this->input->post('ns')));
+						$tgl_ns   	 	= htmlentities(strip_tags($this->input->post('tgl_ns')));
+						// $tgl_no_asal  = htmlentities(strip_tags($this->input->post('tgl_no_asal')));
 						// $pengirim   	= htmlentities(strip_tags($this->input->post('pengirim')));
 						$penerima   	= htmlentities(strip_tags($this->input->post('penerima')));
 						$perihal   	 	= htmlentities(strip_tags($this->input->post('perihal')));
 
 								$data = array(
-									'tgl_ns'		   	 => $tgl_no_asal,
-									'no_asal'		  	 => $no_asal,
-									'tgl_no_asal'	   => $tgl_no_asal,
+									'tgl_ns'		   	 => $tgl_ns,
+									'no_surat'		  	 => $ns,
+									// 'tgl_no_asal'	   => $tgl_no_asal,
 									'pengirim'		   => $data['user']->row()->nama_lengkap,
 									'penerima'	 		 => $penerima,
 									'perihal'		   	 => $perihal,
@@ -1514,7 +1524,7 @@ class Users extends CI_Controller {
 					$data['query'] = $this->db->get_where("tbl_sk", array('id_sk' => "$id", 'id_user' => "$id_user"))->row();
 					$data['judul_web'] 	  = "Hapus Surat Keluar | Aplikasi Surat Menyurat";
 
-					if ($data['query']->id_user != '') {
+					if ($data['user']->row()->level != 'user') {
 							// $this->session->set_flashdata('msg',
 							// 	'
 							// 	<div class="alert alert-warning alert-dismissible" role="alert">
